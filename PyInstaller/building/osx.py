@@ -264,8 +264,13 @@ class BUNDLE(Target):
                 dest_path = os.path.join(bin_dir, dest_name)
                 os.symlink(relative_source_path, dest_path)
 
+        # remove all .DS_Store files from the bundle
+        logger.info('Removing .DS_Store from the bundle')
+        osxutils.remove_ds_store(self.name)
+
         # Sign the bundle
         logger.info('Signing the BUNDLE...')
+
         try:
             osxutils.sign_binary(self.name, self.codesign_identity, self.entitlements_file, deep=True)
         except Exception as e:
