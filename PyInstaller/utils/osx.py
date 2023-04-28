@@ -361,13 +361,7 @@ def sign_binary(filename, identity=None, entitlements_file=None, deep=False):
 def remove_ds_store(bundleName):
     """
     Remove .DS_Store from the bundled app
-
-    Parameters
-    ----------
-    bundleName : str
-        Full path to the app bundle
     """
-    # find dist/SanPy.app -name .DS_Store -delete
     cmd_args = ['find', bundleName, '-name', '.DS_Store', '-delete']
     p = subprocess.run(cmd_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)
     if p.returncode:

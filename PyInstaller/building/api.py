@@ -855,7 +855,10 @@ class EXE(Target):
                 osxutils.set_macos_sdk_version(build_name, *pylib_version)
 
             # Re-sign the binary (either ad-hoc or using real identity, if provided).
-            logger.info("Re-signing the EXE")
+            logger.info("=== Re-signing the EXE")
+            logger.info(f'  build_name: {build_name}')
+            logger.info(f'  codesign_identity: {self.codesign_identity}')
+            logger.info(f'  entitlements_file: {self.entitlements_file}')
             osxutils.sign_binary(build_name, self.codesign_identity, self.entitlements_file)
 
         # Ensure executable flag is set

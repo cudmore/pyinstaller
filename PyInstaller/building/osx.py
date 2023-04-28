@@ -265,7 +265,7 @@ class BUNDLE(Target):
                 os.symlink(relative_source_path, dest_path)
 
         # remove all .DS_Store files from the bundle
-        logger.info('Removing .DS_Store from the bundle')
+        logger.info('=== Removing .DS_Store from the bundle')
         osxutils.remove_ds_store(self.name)
 
         # Sign the bundle
